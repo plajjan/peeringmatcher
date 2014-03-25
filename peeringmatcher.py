@@ -164,7 +164,7 @@ class PeeringMatcher:
         sql_ixes = """
             SELECT public.name,
                 peer.asn,
-                ppp.local_ipaddr
+                COALESCE(ppp.local_ipaddr, '')
             FROM peerParticipantsPublics ppp
             JOIN peerParticipants peer ON ppp.participant_id=peer.id
             JOIN mgmtPublics public ON ppp.public_id = public.id
